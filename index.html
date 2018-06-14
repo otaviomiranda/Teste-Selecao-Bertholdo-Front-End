@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="meuModulo">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>homeDesign</title>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="estilo.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-controller="indexController">
+    <div class="container init">
+        <div class="row">
+            <div class="col-md-7">
+                <a href="#" class="linkNav">LISTA DE PRESENTES</a>
+            </div>
+            <div class="col-md-5 textoDireita">
+                <a href="#" class="linkNav">
+                    <span class="glyphicon glyphicon-heart-empty"></span> MEUS FAVORITOS </a>
+                <a href="#" class="linkNav">
+                    <span class="glyphicon glyphicon-menu-right"></span> ENTRAR</a>
+                <a href="#" class="linkNav">
+                    <span class="glyphicon glyphicon-user"></span> CADASTRAR</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <hr>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <div class="input-group navMargin">
+                        <input type="text" ng-model="busca" class="form-control" placeholder="Pesquisar no site..." aria-describedby="basic-addon2">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="img/logomarca.jpg" alt="homeDESIGN">
+                    <!-- <h1 class="logo">homeDESIGN</h1> -->
+                </div>
+                <div class="col-md-4 navMargin textoDireita">
+                    <span>
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        <span>MEU CARRINHO</span>
+                        <span id="qnte">0 item(s) por</span>
+                        <span id="preco">R$ 0.00</span>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <hr>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 navBar">
+                <a href="#">HOME</a>
+                <span class="vertical"></span>
+                <a href="#">MESA</a>
+                <span class="vertical"></span>
+                <a href="#">BAR</a>
+                <span class="vertical"></span>
+                <a href="#">TALHERES</a>
+                <span class="vertical"></span>
+                <a href="#">CHÁ E CAFÉ</a>
+                <span class="vertical"></span>
+                <a href="#">NATURAIS</a>
+                <span class="vertical"></span>
+                <a href="#">VASOS</a>
+                <span class="vertical"></span>
+                <a href="#">ILUMINAÇÃO</a>
+                <span class="vertical"></span>
+                <a href="#">ESCRITÓRIO</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <hr>
+    </div>
+
+    <div id="banner" class="col-md-12 navBar">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <h1 class="titulo">Conheça mais as novidades em nossa Loja</h1>
+                </div>
+            </div>
+            <div>
+                <button class="botao">Veja Mais</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="categoria1" class="col-md-3 categorias">
+                    <h3>-ILUMINAÇÃO-</h3>
+                    <a href="#" class="linkCategoria">Veja Mais</a>
+                </div>
+                <div id="categoria2" class="col-md-3 categorias">
+                    <h3>-SUSTENTO LÍQUIDO-</h3>
+                    <a href="#" class="linkCategoria">Veja Mais</a>
+                </div>
+                <div id="categoria3" class="col-md-3 categorias">
+                    <h3>-CHÁ E CAFÉ-</h3>
+                    <a href="#" class="linkCategoria">Veja Mais</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 secao3">
+                <div class="col-md-5 barra">
+                    <hr>
+                </div>
+                <div class="col-md-2 destaque">
+                    Destaques
+                </div>
+                <div class="col-md-5 barra">
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-2 produtos" ng-repeat="produto in produtos | filter:busca" id="{{produto.id}}" >
+                    <p class="pTitulo">{{produto.nome}}</p>
+                    <p class="preco">R$ {{produto.preco}}</p>
+                    <p class="emPromocao">R$ {{produto.precoOriginal}}</p>
+                    <button class="comprar" ng-class="atualizaCarrinho(produto)">COMPRAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 s4 noPaddingRight">
+                <div class="col-md-6 s4">
+                    <div id="champ" class="line2 secao4">
+                        <p class="tituloSecao4">-CHAMPANHEIRA-</p>
+                        <a href="#" class="linkCategoria4">PEÇA UNICA, NUMERADA E ASSINADA</a>
+                    </div>
+                    <div id="escritorio" class="line2 secao4">
+                        <p class="tituloSecao4">-ESCRITÓRIO-</p>
+                        <a href="#" class="linkCategoria4">CONFIRA AGORA</a>
+                    </div>
+                </div>
+                <div class="col-md-6 noPaddingRight">
+                    <div id="vertirAMesa" class="secao4">
+                        <p class="tituloSecao4">-VESTIR A MESA-</p>
+                        <a href="#" class="linkCategoria4">VENHA CONFERIR</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 secao5 ">
+                <p>NEWSLETTER</p>
+                <p class="menor">Inscreva-se para receber ofertas exclusivas dos nossos produtos exclusivos</p>
+                <div class="input-group navMargin">
+                    <input id="email" type="text" class="form-control" placeholder="Digite seu email" aria-describedby="basic-addon2">
+                </div>
+                <button class="botao btn2">Assinar</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 secao3">
+                <div class="col-md-5 barra">
+                    <hr>
+                </div>
+                <div class="col-md-2 destaque">
+                    Experimente
+                </div>
+                <div class="col-md-5 barra">
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-4 secao6">
+                    <img class="imgm" src="img/caminhao.jpg" alt="Frente Grátis">
+                    <p>FRETE GRÁTIS</p>
+                    <p class="textoS6">A entrega fica por nossa conta para compras acima de R$800,00 na região sudeste.</p>
+                </div>
+                <div class="col-md-4 secao6">
+                    <img class="imgm" src="img/phone.jpg" alt="Atendimento">
+                    <p>ATENDIMENTO</p>
+                    <p class="textoS6">Atendimento rápido e eficiente. Possui alguma pergunta? Estamos às ordens para proporcionar com precisão
+                        suas respostas.</p>
+                </div>
+                <div class="col-md-4 secao6">
+                    <img class="imgm" src="img/hands.jpg" alt="Feito a mão">
+                    <p>FEITO A MÃO</p>
+                    <p class="textoS6">Admiramos o trabalho feito a mão e fazemos jusa essa valorização. Nossas peças são produzidas uma a uma
+                        artesanalmente com acrinho e precisão.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+                <div class="col-md-3">
+                    <p class="fTitulo">ATENDIMENTO</p>
+                    <p class="obs">
+                        <span class="glyphicon glyphicon-earphone"></span> (99) 9999-9999</p>
+                    <p class="obs">
+                        <span class="glyphicon glyphicon-phone-alt"></span> (99) 9999-9999</p>
+                    <p class="obs">
+                        <span class="glyphicon glyphicon-time"></span> Segunda à Sexta, 7hs às 17hs</p>
+                    <p class="obs">
+                        <span class="glyphicon glyphicon-envelope"></span> contato@contato.com.br</p>
+                    <p class="obs">
+                        <span class="glyphicon glyphicon-map-marker"></span> Rua A, 999, Bairro, Cidade-MG</p>
+                </div>
+                <div class="col-md-3">
+                    <p class="fTitulo">A homeDESIGN</p>
+                    <p class="obs">Quem Somos</p>
+                    <p class="obs">Onde nos encontar</p>
+                    <p class="obs">Fale Conosco</p>
+                    <p class="obs">Serviço Personalizado</p>
+                </div>
+                <div class="col-md-3">
+                    <p class="fTitulo">INFORMAÇÕES ÚTEIS</p>
+                    <p class="obs">Conserto</p>
+                    <p class="obs">Manutenção</p>
+                    <p class="obs">Trocas e Devoluções</p>
+                    <p class="obs">Dúvidas Frequentes</p>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        <p class="fTitulo">FORMAS DE PAGAMENTO</p>
+                        <img src="img/pagamento.jpg" alt="Forma de Pagamento">
+                    </div>
+                    <div>
+                        <p class="fTitulo">REDES SOCIAIS</p>
+                        <img src="img/social_media.jpg" alt="Redes Sociais">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12 final">
+        A homeDESIGN vem ao mercado sob um novo conceito de decoração e arte. Ligado a ambas idéias, a proposta base é vestir a sua
+        casa.
+    </div>
+    <div class="col-md-12 rodape">
+        <img src="img/bertholdo.jpg" alt="Bertholdo"> BTR Loja: Crie sua loja virtual com a plataforma Magento
+        <img src="img/mag.jpg" alt="Magento">
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="js/app/app.js"></script>
+    <script src="js/app/controllers.js"></script>
+
+</body>
+
+</html>
